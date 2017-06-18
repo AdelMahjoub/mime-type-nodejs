@@ -1,4 +1,4 @@
- `$ npm install --save file-mime-type`
+ `$ npm install --save file-mime-types`
 
 ### Description
 
@@ -20,7 +20,7 @@ Read on the browser request stream and returns the mime-type of an uploaded file
 **nodejs server**
 ```
 const http     = require('http');
-const mimeType = require('file-mime-type');
+const mimeType = require('file-mime-types');
 
 http.createServer((req, res) => {
 
