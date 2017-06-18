@@ -1,5 +1,5 @@
 {
-  "name": "@mime-type",
+  "name": "file-mime-type",
   "version": "1.0.0",
   "description": "returns the mime-type of an uploaded file",
   "main": "index.js",
