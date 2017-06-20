@@ -1,59 +1,3 @@
- `$ npm install --save file-mime-types`
-
-### Description
-
-Read on the browser request stream and returns the mime-type, possible extensions and the size of an uploaded file.
-
-When uploading a file from a client, the request should have a `"Content-type": "multipart/form-data"` header.
-
-### Usage Example
-
-**html form**
-```
-// index.html
-
-<form 
-    action="/upload" <!-- route -->
-    enctype="multipart/form-data" <!-- important -->
-    method="POST">
-    <input type="file" name="fileUploaded">
-    <button type="submit">Upload</button>
- </form>
-```
-
-**nodejs server**
-```
-const http = require('http');
-const mimeAndType = require('file-mime-types');
-const fs = require('fs');
-
-http.createServer((req, res) => {
-  if(req.url === '/upload') {
-    req.once('data', (chunk) => {
-      console.log(mimeAndType(req, chunk));
-    });
-  }
-  res.setHeader('Content-type', 'text/html');
-
-  fs.readFile(`${__dirname}/index.html`, 'utf8', (err, data) => {
-    res.write(data);
-    res.end();
-  });
-  
-}).listen(3000);
-
-// examples : 
-// { mime: 'text/css', ext: [ 'css' ], byteLength: '72450' }
-// { mime: 'application/vnd.debian.binary-package', ext: [ 'deb' ], byteLength: '34493720' }
-```
-
-The ext property of the result is an array of possible extensions.
-
-An empty array means that no extension was found, this may happen if the mime type is application/octet-stream.
-
-The mime-to-ext.json file contains a list of mime-types and the matching file extensions.
-
-```
 {
   "application/atom+xml":"atom",
   "application/json":["json","map","topojson"],
@@ -151,4 +95,3 @@ The mime-to-ext.json file contains a list of mime-types and the matching file ex
   "text/vtt":"vtt",
   "text/x-component":"htc"
 }
-```
