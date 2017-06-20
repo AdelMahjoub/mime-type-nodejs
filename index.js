@@ -1,18 +1,18 @@
 const fs = require('fs');
 
 const MIME_EXT = JSON.parse(fs.readFileSync(`${__dirname}/mime-to-ext.json`, 'utf8'));  
+const ISO8859_1 = JSON.parse(fs.readFileSync(`${__dirname}/iso-sign.json`));
 
 const filterOctetStream = function(chunk) {
-  const types = {
-   "bin": "SP01",
-   "dmg": "x.s.bb`",
-  }
   let extensions = [];
-  Object.keys(types).forEach(ext => {
-    let isoSign = types[ext];
-    if(chunk.toString('latin1').includes(isoSign)) {
-      extensions.push(ext);
-    }
+  Object.keys(ISO8859_1).forEach(ext => {
+    let isoHeaders = ISO8859_1[ext]['signatures'];
+    isoHeaders.forEach(header => {
+      let isoSign = Buffer.from(header).toString('latin1');
+      if(chunk.slice(0, 300).toString('latin1').includes(isoSign)) {
+        extensions.push(ext);
+      }
+    });
   });
   return extensions;
 }

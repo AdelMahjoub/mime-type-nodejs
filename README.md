@@ -149,6 +149,12 @@ The mime-to-ext.json file contains a list of mime-types and the matching file ex
   "text/vnd.sun.j2me.app-descriptor":"jad",
   "text/vnd.wap.wml":"wml",
   "text/vtt":"vtt",
-  "text/x-component":"htc"
+  "text/x-component":"htc",
+  "application/x-desktop": "desktop",
+  "text/x-markdown": "md",
+  "text/vnd.trolltech.linguist": "ts",
+  "image/vnd.microsoft.icon": "ico",
+  "application/x-java-archive": "jar",
+  "application/x-sharedlib": "so"
 }
 ```
