@@ -1,6 +1,6 @@
 {
   "name": "file-mime-types",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "returns the mime-type, extension and the size of an uploaded file.",
   "main": "index.js",
   "scripts": {
