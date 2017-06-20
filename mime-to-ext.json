@@ -93,5 +93,6 @@
   "text/vnd.sun.j2me.app-descriptor":"jad",
   "text/vnd.wap.wml":"wml",
   "text/vtt":"vtt",
-  "text/x-component":"htc"
+  "text/x-component":"htc",
+  "application/x-desktop": "desktop"
 }
