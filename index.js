@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const MIME_EXT = JSON.parse(fs.readFileSync('./mime-to-ext.json', 'utf8'));  
+const MIME_EXT = JSON.parse(fs.readFileSync(`${__dirname}/mime-to-ext.json`, 'utf8'));  
 
 const filterOctetStream = function(chunk) {
   const types = {
